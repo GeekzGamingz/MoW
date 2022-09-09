@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dooble.png-4775bc23d4c5ca70033d8104f3916404.stex"
+path="res://.import/walkdown.png-121b8f8488f0f324248647c874c04be7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://source/actors/1_player/assets/dooble.png"
-dest_files=[ "res://.import/dooble.png-4775bc23d4c5ca70033d8104f3916404.stex" ]
+source_file="res://source/actors/01_Player/assets/walkdown.png"
+dest_files=[ "res://.import/walkdown.png-121b8f8488f0f324248647c874c04be7.stex" ]
 
 [params]
 

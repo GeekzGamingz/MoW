@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://source/actors/1_player/assets/walkdown.png" type="Texture" id=1]
-[ext_resource path="res://source/actors/1_player/PlayerFSM.gd" type="Script" id=2]
-[ext_resource path="res://source/actors/1_player/Player.gd" type="Script" id=3]
+[ext_resource path="res://source/actors/01_Player/assets/walkdown.png" type="Texture" id=1]
+[ext_resource path="res://source/actors/01_Player/PlayerFSM.gd" type="Script" id=2]
+[ext_resource path="res://source/actors/01_Player/Player.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 24.0
