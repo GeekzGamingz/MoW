@@ -37,20 +37,16 @@ func transitions(delta):
 		states.idleEast: return dirMove()
 		states.idleWest: return dirMove()
 		states.walkNorth:
-			if parent.motion.y == 0:
-				return states.idleNorth
+			if parent.motion.y == 0: return states.idleNorth
 			return dirMove()
 		states.walkSouth:
-			if parent.motion.y == 0:
-				return states.idleSouth
+			if parent.motion.y == 0: return states.idleSouth
 			return dirMove()
 		states.walkEast:
-			if parent.motion.x == 0:
-				return states.idleEast
+			if parent.motion.x == 0: return states.idleEast
 			return dirMove()
 		states.walkWest:
-			if parent.motion.x == 0:
-				return states.idleWest
+			if parent.motion.x == 0: return states.idleWest
 			return dirMove()
 	return null
 #Enter State
