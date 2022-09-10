@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://source/actors/1_player/assets/walkdown.png" type="Texture" id=1]
-[ext_resource path="res://source/actors/1_player/PlayerFSM.gd" type="Script" id=2]
-[ext_resource path="res://source/actors/1_player/Player.gd" type="Script" id=3]
+[ext_resource path="res://source/actors/01_Player/assets/walkdown.png" type="Texture" id=1]
+[ext_resource path="res://source/actors/01_Player/PlayerFSM.gd" type="Script" id=2]
+[ext_resource path="res://source/actors/01_Player/Player.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 24.0
@@ -113,16 +113,12 @@ graph_offset = Vector2( 0, -41 )
 collision_layer = 2
 collision_mask = 29
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_horizontal_guides_": [ -70.0, 48.0 ],
-"_edit_vertical_guides_": [ -31.0, 28.0 ]
-}
 
 [node name="PlayerFSM" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -14 )
+position = Vector2( 2, -14 )
 texture = ExtResource( 1 )
 hframes = 4
 
@@ -133,26 +129,36 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="StateOutput" type="Label" parent="."]
-margin_left = -75.0
-margin_top = -75.0
-margin_right = 75.0
-margin_bottom = -45.0
-text = "State"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="."]
 current = true
 
-[node name="ActivationZone" type="Area2D" parent="."]
+[node name="PlayerAreas" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationZone"]
+[node name="ActivationZone" type="Area2D" parent="PlayerAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAreas/ActivationZone"]
 modulate = Color( 0, 1, 0, 1 )
 shape = SubResource( 2 )
+
+[node name="Anchors" type="Node2D" parent="."]
+
+[node name="Assaulter" type="Position2D" parent="Anchors"]
+position = Vector2( -100, 0 )
+__meta__ = {
+"_gizmo_extents_": 25.0
+}
+
+[node name="Protector" type="Position2D" parent="Anchors"]
+position = Vector2( 75, 75 )
+__meta__ = {
+"_gizmo_extents_": 25.0
+}
+
+[node name="Supporter" type="Position2D" parent="Anchors"]
+position = Vector2( 50, -100 )
+__meta__ = {
+"_gizmo_extents_": 25.0
+}
 
 [node name="AnimationPlayers" type="Node2D" parent="."]
 
@@ -165,3 +171,14 @@ tree_root = SubResource( 8 )
 anim_player = NodePath("../SpritePlayer")
 active = true
 parameters/playback = SubResource( 9 )
+
+[node name="PlayerOutputs" type="Node2D" parent="."]
+
+[node name="StateOutput" type="Label" parent="PlayerOutputs"]
+margin_left = -75.0
+margin_top = -75.0
+margin_right = 75.0
+margin_bottom = -45.0
+text = "State"
+align = 1
+valign = 1
