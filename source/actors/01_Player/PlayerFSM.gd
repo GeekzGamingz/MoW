@@ -2,7 +2,7 @@ extends StateMachine
 #-------------------------------------------------------------------------------------------------#
 #Variables
 #OnReady Variables
-onready var stateLabel: Label = parent.get_node("StateOutput")
+onready var stateLabel: Label = parent.get_node("PlayerOutputs/StateOutput")
 #-------------------------------------------------------------------------------------------------#
 #Ready
 func _ready() -> void:
