@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://source/actors/01_Player/Player.tscn" type="PackedScene" id=2]
+
+[node name="Debug" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 2048.0
+margin_bottom = 1200.0
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1086, 505 )
