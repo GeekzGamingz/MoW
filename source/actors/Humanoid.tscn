@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://sigxdq0cqgxf"]
+
+[ext_resource type="Texture2D" uid="uid://dlht5lbtb1f8e" path="res://assets/PlayerTemplate.png" id="1_n1woc"]
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_xkvpd"]
+enabled = true
+
+[node name="Humanoid" type="CharacterBody2D"]
+
+[node name="Template" type="Sprite2D" parent="."]
+position = Vector2(-425, 0)
+texture = ExtResource("1_n1woc")
+
+[node name="Polygons" type="Node2D" parent="."]
+
+[node name="Head" type="Polygon2D" parent="Polygons"]
+position = Vector2(-86, -269)
+texture = ExtResource("1_n1woc")
+polygon = PackedVector2Array(136.827, 129.059, 139.751, 132.373, 139.946, 139.001, 128.64, 156.739, 110.317, 166.096, 75.0339, 165.901, 55.7357, 158.689, 41.8955, 138.221, 38.7766, 119.897, 40.9209, 96.8953, 50.6674, 77.9869, 67.6265, 65.5113, 89.6538, 61.6127, 111.876, 65.9012, 128.055, 77.9869, 135.853, 91.8271, 137.997, 113.27, 137.802, 123.796)
+uv = PackedVector2Array(136.827, 129.059, 139.751, 132.373, 139.946, 139.001, 128.64, 156.739, 110.317, 166.096, 75.0339, 165.901, 55.7357, 158.689, 41.8955, 138.221, 38.7766, 119.897, 40.9209, 96.8953, 50.6674, 77.9869, 67.6265, 65.5113, 89.6538, 61.6127, 111.876, 65.9012, 128.055, 77.9869, 135.853, 91.8271, 137.997, 113.27, 137.802, 123.796)
+
+[node name="Skeleton" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_xkvpd")
+
+[node name="Waist" type="Bone2D" parent="Skeleton"]
+
+[node name="Torso" type="Bone2D" parent="Skeleton/Waist"]
+position = Vector2(0, -48)
+
+[node name="Head" type="Bone2D" parent="Skeleton/Waist/Torso"]
+position = Vector2(0, -80)
+
+[node name="Arm_Front" type="Bone2D" parent="Skeleton/Waist/Torso"]
+position = Vector2(-18, -46)
+
+[node name="Hand_Front" type="Bone2D" parent="Skeleton/Waist/Torso/Arm_Front"]
+position = Vector2(-13, 64)
+
+[node name="Arm_Back" type="Bone2D" parent="Skeleton/Waist/Torso"]
+position = Vector2(19, -46)
+
+[node name="Hand_Back" type="Bone2D" parent="Skeleton/Waist/Torso/Arm_Back"]
+position = Vector2(7, 64)
+
+[node name="Leg_Front" type="Bone2D" parent="Skeleton/Waist"]
+position = Vector2(-31, 0)
+
+[node name="Calf_Front" type="Bone2D" parent="Skeleton/Waist/Leg_Front"]
+position = Vector2(0, 62)
+
+[node name="Foot_Front" type="Bone2D" parent="Skeleton/Waist/Leg_Front/Calf_Front"]
+position = Vector2(0, 44)
+
+[node name="Leg_Back" type="Bone2D" parent="Skeleton/Waist"]
+position = Vector2(26, 0)
+
+[node name="Calf_Back" type="Bone2D" parent="Skeleton/Waist/Leg_Back"]
+position = Vector2(0, 62)
+
+[node name="Foot_Back" type="Bone2D" parent="Skeleton/Waist/Leg_Back/Calf_Back"]
+position = Vector2(0, 44)

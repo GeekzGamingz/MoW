@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ua7nxxrhaxp"
-path="res://.godot/imported/dooble.png-30af02f03cd3c0a09ad27d7ada5888a2.ctex"
+uid="uid://iirbbqkeqinp"
+path="res://.godot/imported/image.png-7a7bd711b5b4054e846c70397f9ba855.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://source/actors/01_Player/assets/dooble.png"
-dest_files=["res://.godot/imported/dooble.png-30af02f03cd3c0a09ad27d7ada5888a2.ctex"]
+source_file="res://assets/image.png"
+dest_files=["res://.godot/imported/image.png-7a7bd711b5b4054e846c70397f9ba855.ctex"]
 
 [params]
 
