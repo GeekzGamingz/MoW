@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sigxdq0cqgxf"]
+[gd_scene load_steps=21 format=3 uid="uid://sigxdq0cqgxf"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_55i33"]
 load_path = "res://.godot/imported/PlayerTemplate.png-900c3540ea297f3b658b125a3424f369.ctex"
@@ -33,26 +33,96 @@ load_path = "res://.godot/imported/PlayerTemplate.png-900c3540ea297f3b658b125a34
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lhgct"]
 load_path = "res://.godot/imported/PlayerTemplate.png-900c3540ea297f3b658b125a3424f369.ctex"
 
-[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_uea04"]
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_dajkl"]
+target_nodepath = NodePath("../IKPaths/TorsoPath")
+joint_one_bone_idx = 0
+joint_one_bone2d_node = NodePath("Waist")
+joint_two_bone_idx = 1
+joint_two_bone2d_node = NodePath("Waist/Torso")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_5ywd2"]
+target_nodepath = NodePath("../IKPaths/BackLegPath")
+joint_one_bone_idx = 10
+joint_one_bone2d_node = NodePath("Waist/Leg_Back")
+joint_two_bone_idx = 11
+joint_two_bone2d_node = NodePath("Waist/Leg_Back/Calf_Back")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_h8nhu"]
+target_nodepath = NodePath("../IKPaths/FrontLegPath")
+joint_one_bone_idx = 7
+joint_one_bone2d_node = NodePath("Waist/Leg_Front")
+joint_two_bone_idx = 8
+joint_two_bone2d_node = NodePath("Waist/Leg_Front/Calf_Front")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_jaa4x"]
 target_nodepath = NodePath("../IKPaths/BackArmPath")
 joint_one_bone_idx = 3
 joint_one_bone2d_node = NodePath("Waist/Torso/Arm_Back")
 joint_two_bone_idx = 4
 joint_two_bone2d_node = NodePath("Waist/Torso/Arm_Back/Hand_Back")
 
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_mlip1"]
+target_nodepath = NodePath("../IKPaths/FrontArmPath")
+flip_bend_direction = true
+joint_one_bone_idx = 5
+joint_one_bone2d_node = NodePath("Waist/Torso/Arm_Front")
+joint_two_bone_idx = 6
+joint_two_bone2d_node = NodePath("Waist/Torso/Arm_Front/Hand_Front")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_dqc4y"]
+bone_index = 2
+bone2d_node = NodePath("Waist/Torso/Head")
+target_nodepath = NodePath("../IKPaths/HeadPath")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_k6yon"]
+bone_index = 4
+bone2d_node = NodePath("Waist/Torso/Arm_Back/Hand_Back")
+target_nodepath = NodePath("../IKPaths/BackHandPath")
+
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_kk6bm"]
+bone_index = 6
+bone2d_node = NodePath("Waist/Torso/Arm_Front/Hand_Front")
+target_nodepath = NodePath("../IKPaths/FrontHandPath")
+
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_xkvpd"]
 enabled = true
-modification_count = 2
-modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_uea04")
+modification_count = 8
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_dajkl")
+modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_5ywd2")
+modifications/2 = SubResource("SkeletonModification2DTwoBoneIK_h8nhu")
+modifications/3 = SubResource("SkeletonModification2DTwoBoneIK_jaa4x")
+modifications/4 = SubResource("SkeletonModification2DTwoBoneIK_mlip1")
+modifications/5 = SubResource("SkeletonModification2DLookAt_dqc4y")
+modifications/6 = SubResource("SkeletonModification2DLookAt_k6yon")
+modifications/7 = SubResource("SkeletonModification2DLookAt_kk6bm")
 
 [node name="Humanoid" type="CharacterBody2D"]
 
 [node name="IKPaths" type="Node2D" parent="."]
 
+[node name="TorsoPath" type="Marker2D" parent="IKPaths"]
+position = Vector2(0, -183)
+
+[node name="HeadPath" type="Marker2D" parent="IKPaths"]
+position = Vector2(106, -130)
+
 [node name="BackArmPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(39, 16)
+position = Vector2(90, 33)
+
+[node name="BackHandPath" type="Marker2D" parent="IKPaths"]
+position = Vector2(180, -27)
 
 [node name="FrontArmPath" type="Marker2D" parent="IKPaths"]
+position = Vector2(-68, 12)
+
+[node name="FrontHandPath" type="Marker2D" parent="IKPaths"]
+position = Vector2(-119, 44)
+
+[node name="BackLegPath" type="Marker2D" parent="IKPaths"]
+position = Vector2(27, 74)
+
+[node name="FrontLegPath" type="Marker2D" parent="IKPaths"]
+position = Vector2(-32, 74)
 
 [node name="Polygons" type="Node2D" parent="."]
 metadata/_edit_group_ = true
@@ -62,10 +132,11 @@ metadata/_edit_lock_ = true
 position = Vector2(-183, -208)
 texture = SubResource("CompressedTexture2D_55i33")
 skeleton = NodePath("../../Skeleton")
-polygon = PackedVector2Array(188.026, 161.162, 193.756, 158.297, 200.919, 162.309, 205.217, 169.185, 208.083, 176.635, 210.375, 187.81, 210.948, 199.558, 207.223, 202.71, 200.633, 203.283, 196.048, 200.131, 192.61, 194.114, 191.464, 185.804, 189.458, 174.629, 186.306, 166.893)
-uv = PackedVector2Array(187.956, 161.509, 193.686, 158.644, 200.849, 162.656, 205.147, 169.532, 208.013, 176.982, 210.305, 188.157, 210.878, 199.905, 207.153, 203.057, 200.563, 203.63, 195.978, 200.478, 192.54, 194.461, 191.394, 186.151, 189.388, 174.976, 186.236, 167.24)
+polygon = PackedVector2Array(188.026, 161.162, 193.756, 158.297, 200.919, 162.309, 205.217, 169.185, 208.083, 176.635, 210.375, 187.81, 210.948, 199.558, 207.223, 202.71, 200.633, 203.283, 196.048, 200.131, 192.61, 194.114, 191.464, 185.804, 189.458, 174.629, 186.306, 166.893, 193.193, 164.506, 196.596, 171.961, 199.514, 181.037, 201.621, 190.762, 203.89, 200)
+uv = PackedVector2Array(187.956, 161.509, 193.686, 158.644, 200.849, 162.656, 205.147, 169.532, 208.013, 176.982, 210.305, 188.157, 210.878, 199.905, 207.153, 203.057, 200.563, 203.63, 195.978, 200.478, 192.54, 194.461, 191.394, 186.151, 189.388, 174.976, 186.236, 167.24, 193.193, 164.506, 196.596, 171.961, 199.514, 181.037, 201.621, 190.762, 203.89, 200)
 polygons = [PackedInt32Array(13, 0, 1, 2), PackedInt32Array(13, 12, 3, 2), PackedInt32Array(12, 11, 4, 3), PackedInt32Array(11, 10, 5, 4), PackedInt32Array(10, 9, 6, 5), PackedInt32Array(9, 8, 7, 6)]
-bones = ["Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Arm_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Arm_Front/Hand_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Arm_Back", PackedFloat32Array(1, 1, 1, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 1), "Waist/Torso/Arm_Back/Hand_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Front/Calf_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Front/Calf_Front/Foot_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Back/Calf_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Back/Calf_Back/Foot_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+bones = ["Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Arm_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Arm_Front/Hand_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso/Arm_Back", PackedFloat32Array(1, 1, 1, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 0.42, 1, 0, 0, 0, 0, 0), "Waist/Torso/Arm_Back/Hand_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Front/Calf_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Front/Calf_Front/Foot_Front", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Back/Calf_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Leg_Back/Calf_Back/Foot_Back", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 5
 
 [node name="Hand_Back" type="Polygon2D" parent="Polygons"]
 position = Vector2(-181, -246)
@@ -161,15 +232,22 @@ bones = ["Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso
 modification_stack = SubResource("SkeletonModificationStack2D_xkvpd")
 
 [node name="Waist" type="Bone2D" parent="Skeleton"]
+scale = Vector2(0.99996, 0.99996)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Torso" type="Bone2D" parent="Skeleton/Waist"]
 position = Vector2(0, -40)
 rest = Transform2D(1, 0, 0, 1, 0, -40)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Head" type="Bone2D" parent="Skeleton/Waist/Torso"]
 position = Vector2(0, -40)
 rest = Transform2D(1, 0, 0, 1, 0, -40)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Arm_Back" type="Bone2D" parent="Skeleton/Waist/Torso"]
 position = Vector2(14, -2)
@@ -177,42 +255,60 @@ rest = Transform2D(1, 0, 0, 1, 14, -2)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Hand_Back" type="Bone2D" parent="Skeleton/Waist/Torso/Arm_Back"]
-position = Vector2(8, 35)
-rotation = 0.698132
-scale = Vector2(0.999999, 0.999999)
+position = Vector2(7.99965, 34.9995)
+rotation = 1.16683
+scale = Vector2(1.00002, 1.00002)
 rest = Transform2D(0.766043, 0.642787, -0.642787, 0.766043, 8, 35)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 40.0
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Arm_Front" type="Bone2D" parent="Skeleton/Waist/Torso"]
 position = Vector2(-7, -2)
 rest = Transform2D(1, 0, 0, 1, -7, -2)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Hand_Front" type="Bone2D" parent="Skeleton/Waist/Torso/Arm_Front"]
 position = Vector2(-8, 35)
 rotation = 0.698132
 scale = Vector2(1, 1)
 rest = Transform2D(0.766044, 0.642788, -0.642788, 0.766044, -8, 35)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 40.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Leg_Front" type="Bone2D" parent="Skeleton/Waist"]
 position = Vector2(-15, 5)
 rest = Transform2D(1, 0, 0, 1, -15, 5)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Calf_Front" type="Bone2D" parent="Skeleton/Waist/Leg_Front"]
 position = Vector2(0, 30)
 rest = Transform2D(1, 0, 0, 1, 0, 30)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Foot_Front" type="Bone2D" parent="Skeleton/Waist/Leg_Front/Calf_Front"]
 position = Vector2(0, 25)
 rest = Transform2D(1, 0, 0, 1, 0, 25)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
 
 [node name="Leg_Back" type="Bone2D" parent="Skeleton/Waist"]
 position = Vector2(15, 5)
 rest = Transform2D(1, 0, 0, 1, 15, 5)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Calf_Back" type="Bone2D" parent="Skeleton/Waist/Leg_Back"]
 position = Vector2(0, 30)
 rest = Transform2D(1, 0, 0, 1, 0, 30)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Foot_Back" type="Bone2D" parent="Skeleton/Waist/Leg_Back/Calf_Back"]
 position = Vector2(0, 25)
 rest = Transform2D(1, 0, 0, 1, 0, 25)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
