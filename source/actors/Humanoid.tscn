@@ -1,4 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://sigxdq0cqgxf"]
+[gd_scene load_steps=24 format=3 uid="uid://sigxdq0cqgxf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5fb7"]
+radius = 20.0
+height = 125.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_55i33"]
 load_path = "res://.godot/imported/PlayerTemplate.png-900c3540ea297f3b658b125a3424f369.ctex"
@@ -96,7 +100,117 @@ modifications/5 = SubResource("SkeletonModification2DLookAt_dqc4y")
 modifications/6 = SubResource("SkeletonModification2DLookAt_k6yon")
 modifications/7 = SubResource("SkeletonModification2DLookAt_kk6bm")
 
+[sub_resource type="Animation" id="Animation_lgdg8"]
+resource_name = "Template"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IKPaths/TorsoPath:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -183)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IKPaths/BackArmPath:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72, 66)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("IKPaths/BackHandPath:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(89, 114)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IKPaths/FrontArmPath:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-31, 21)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IKPaths/FrontHandPath:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-53, 67)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("IKPaths/BackLegPath:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(17, 60)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("IKPaths/FrontLegPath:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18, 61)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton/Waist:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ujg8q"]
+_data = {
+"Template": SubResource("Animation_lgdg8")
+}
+
 [node name="Humanoid" type="CharacterBody2D"]
+collision_layer = 2
+
+[node name="Collision_World" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_v5fb7")
 
 [node name="IKPaths" type="Node2D" parent="."]
 
@@ -104,25 +218,25 @@ modifications/7 = SubResource("SkeletonModification2DLookAt_kk6bm")
 position = Vector2(0, -183)
 
 [node name="HeadPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(106, -130)
+position = Vector2(193, -85)
 
 [node name="BackArmPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(90, 33)
+position = Vector2(72, 66)
 
 [node name="BackHandPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(180, -27)
+position = Vector2(89, 114)
 
 [node name="FrontArmPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(-68, 12)
+position = Vector2(-31, 21)
 
 [node name="FrontHandPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(-119, 44)
+position = Vector2(-53, 67)
 
 [node name="BackLegPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(27, 74)
+position = Vector2(17, 60)
 
 [node name="FrontLegPath" type="Marker2D" parent="IKPaths"]
-position = Vector2(-32, 74)
+position = Vector2(-18, 61)
 
 [node name="Polygons" type="Node2D" parent="."]
 metadata/_edit_group_ = true
@@ -232,7 +346,9 @@ bones = ["Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Waist/Torso
 modification_stack = SubResource("SkeletonModificationStack2D_xkvpd")
 
 [node name="Waist" type="Bone2D" parent="Skeleton"]
-scale = Vector2(0.99996, 0.99996)
+position = Vector2(1, 3.48564)
+rotation = -0.0053556
+scale = Vector2(0.999842, 0.999842)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 metadata/_local_pose_override_enabled_ = true
 
@@ -272,7 +388,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Hand_Front" type="Bone2D" parent="Skeleton/Waist/Torso/Arm_Front"]
 position = Vector2(-8, 35)
 rotation = 0.698132
-scale = Vector2(1, 1)
 rest = Transform2D(0.766044, 0.642788, -0.642788, 0.766044, -8, 35)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -312,3 +427,14 @@ rest = Transform2D(1, 0, 0, 1, 0, 25)
 auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 0.0
+
+[node name="AnimationPlayers" type="Node2D" parent="."]
+visible = false
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationPlayers"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_ujg8q")
+}
