@@ -15,7 +15,16 @@ run/main_scene="res://source/actors/Humanoid.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/always_on_top=true
+window/stretch/mode="viewport"
+
 [layer_names]
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
+
+[rendering]
+
+renderer/rendering_method="mobile"
